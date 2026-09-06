@@ -4,18 +4,6 @@ apply plugin: 'maven'
 group = 'com.github.apexiotiver-gif'
 version = '1.0.0'
 
-// Unpack classes.jar into build dir so Gradle picks up the classes
-task unpackJar(type: Copy) {
-    from(zipTree('Simo-offline-Ai/classes.jar'))
-    into('src/main/java')
-}
-
-compileJava.dependsOn unpackJar
-
-sourceSets {
-    main {
-        java {
-            srcDirs = ['src/main/java']
-        }
-    }
+jar {
+    from zipTree('Simo-offline-Ai/classes.jar')
 }
