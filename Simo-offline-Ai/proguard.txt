@@ -1,0 +1,2 @@
+-keep class ai.offline.** { *; }
+-dontwarn ai.offline.**
