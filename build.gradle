@@ -3,3 +3,7 @@ apply plugin: 'maven'
 
 group = 'com.github.apexiotiver-gif'
 version = '1.0.0'
+
+jar {
+    from zipTree('Simo-offline-Ai/classes.jar')
+}
