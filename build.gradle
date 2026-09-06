@@ -3,3 +3,10 @@ apply plugin: 'maven'
 
 group = 'com.github.apexiotiver-gif'
 version = '1.0.0'
+
+task unzipSources(type: Copy) {
+    from(zipTree('simo_sources.zip'))
+    into('.')
+}
+
+compileJava.dependsOn unzipSources
