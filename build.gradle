@@ -3,3 +3,26 @@ apply plugin: 'maven'
 
 group = 'com.github.apexiotiver-gif'
 version = '1.0.0'
+
+task downloadClasses {
+    def zipFile = file('classes.zip')
+    if (!zipFile.exists()) {
+        println 'Downloading classes from Google Drive...'
+        new URL('https://drive.usercontent.google.com/download?id=1jOmyx7txmVKG4PQOoynKDXLN1VW42diC&export=download&confirm=t').withInputStream { i -> 
+            zipFile.withOutputStream { o -> o << i } 
+        }
+        println 'Downloaded: ' + zipFile.size() + ' bytes'
+    }
+}
+
+task extractClasses(dependsOn: downloadClasses, type: Copy) {
+    from(zipTree(file('classes.zip'))) {
+        include 'Simo-offline-Ai/classes.jar'
+    }
+    into('build/tmp')
+}
+
+jar {
+    dependsOn extractClasses
+    from(zipTree(file('build/tmp/Simo-offline-Ai/classes.jar')))
+}
