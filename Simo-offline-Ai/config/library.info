@@ -1,0 +1,7 @@
+[library]
+name=Ai_offline
+package=ai.offline
+version=1.0.0
+description=Offline AI chatbot library with 228 Hinglish response classes. API key + tokens + prompt system. URL: https://offlineAi.com
+min_sdk=21
+target_sdk=34
