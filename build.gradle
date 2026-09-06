@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.github.apexiotiver-gif'
+version = '1.0.0'
+
+jar {
+    from 'Simo-offline-Ai/classes.jar'
+}
+
+artifacts {
+    archives file('Simo-offline-Ai/classes.jar')
+}
